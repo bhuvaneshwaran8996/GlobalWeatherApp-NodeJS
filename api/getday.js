@@ -36,7 +36,9 @@ const getdayforcast = (lat,lon,callback)=>{
                     ozone:body.daily.data[i].ozone,
                     windspeed:body.daily.data[i].windSpeed,
                     dewpoint:body.daily.data[i].dewPoint,
-                    precipitation:body.daily.data[i].precipitation
+                    precipitation:body.daily.data[i].precipitation,
+                    temperaturehigh:body.daily.data[i].temperatureHigh,
+                    temperaturelow:body.daily.data[i].temperatureLow
             
    }
    dalilyarray.push(dailydata)
