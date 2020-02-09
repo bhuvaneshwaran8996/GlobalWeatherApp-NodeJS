@@ -21,7 +21,6 @@ const getcitynamefromcoor =  (name,callback)=>{
            
         }else if(!body.features || body.features.length === 0){
             callback("coordinates not found",undefined)
-          
         }else{
 
 
@@ -30,9 +29,10 @@ const getcitynamefromcoor =  (name,callback)=>{
                 for(var i=cities.length;i>0;i--){
                     cities.pop()
                 }
-            }
+            } 
             
-         
+           
+        
             for(let pos = 0 ; pos<body.features.length; pos++){
 
                 const city = {

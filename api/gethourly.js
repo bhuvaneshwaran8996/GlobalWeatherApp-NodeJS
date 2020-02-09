@@ -2,9 +2,9 @@ const request = require("request")
 const hourlyarray = new Array();
 
 
-const gethourforcast = (lat,lon,callback)=>{
+const gethourforcast = (lat,lon,lang,callback)=>{
     console.log(lat+","+lon)
-    const url = "https://api.darksky.net/forecast/36841f8c8551ca523f6875f49adc7ea5/"+lat+","+lon;
+    const url = "https://api.darksky.net/forecast/36841f8c8551ca523f6875f49adc7ea5/"+lat+","+lon+"?lang="+lang;
  
     request({url:url,json:true}, function (error, response, body) {
      

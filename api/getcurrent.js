@@ -3,28 +3,29 @@ const dayforcast = require("./getday")
 const currentarray = new Array();
 
 
-const getcurrentforcast = (lat,lon,callback)=>{
-    console.log(lat+","+lon)
-    const url = "https://api.darksky.net/forecast/36841f8c8551ca523f6875f49adc7ea5/"+lat+","+lon;
- 
-    request({url:url,json:true}, function (error, response, body) {
-     
-  
-        if(error){
+const getcurrentforcast = (lat, lon, lang, callback) => {
+    console.log(lat + "," + lon)
+    const url = "https://api.darksky.net/forecast/36841f8c8551ca523f6875f49adc7ea5/" + lat + "," + lon + "?lang=" + lang;
 
-      return  callback(response.statusCode+" "+response.statusMessage,undefined)
-        }else if(body.currently.length === 0 || !body.currently){
-           return callback("api data empty",undefined)
+    request({ url: url, json: true }, function (error, response, body) {
 
-        }else{
 
-          
-           return callback(undefined,body.currently)
+        console.log(body.currently)
+        if (error) {
+
+            return callback(response.statusCode + " " + response.statusMessage, undefined)
+        } else if (body.currently.length === 0 || !body.currently) {
+            return callback("api data empty", undefined)
+
+        } else {
+
+
+            return callback(undefined, body.currently)
             //    if(body.currently.length > 0){
             //        console.log(body.currently.length)
             //     for(let i = 0 ; i < body.currently.length ;i++){
-                    
-                    
+
+
             //         const currentdata = {
             //             time:body.currently.time,
             //           summary:body.currently.summary,
@@ -43,7 +44,7 @@ const getcurrentforcast = (lat,lon,callback)=>{
             //           precipitation:body.currently.precipitation,  
             //       }
             //              currentarray.push(currentdata)
-                 
+
             //   }
             //   return callback(undefined,currentarray)
 
@@ -51,12 +52,12 @@ const getcurrentforcast = (lat,lon,callback)=>{
             //    return    callback("currently items not found "+body.currently.length,undefined)
             //    }
 
-                
-          
+
+
         }
         // callback(undefined,currentarray)
     });
-    
+
 }
 
 
