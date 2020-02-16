@@ -6,10 +6,15 @@ const paymentrouter = require("../routers/payment")
 const weatherrouter = require("../routers/weather")
 
 const app = express()
+// app.use((req,res,next)=>{
 
+//     res.send("qasasa")
+// });
 app.use(bodyParser.json())
 app.use(devicerouter)
 app.use(weatherrouter)
+
+
  
 const port = process.env.PORT || 10000
 
