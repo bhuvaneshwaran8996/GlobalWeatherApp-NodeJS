@@ -35,6 +35,7 @@ router.get('/logout',auth,async(req,res)=>{
 })
 router.post('/checkdevice',async(req,res)=>{
 
+    console.log(req.body.DeviceId)
     try{
     const device = await Device.isDeviceAlreadyRegistered(req.body.DeviceId);
  
@@ -54,11 +55,28 @@ router.post('/checkdevice',async(req,res)=>{
 router.post('/login',async (req,res)=>{
    
     const DeviceId = req.body.DeviceId;
+    console.log(DeviceId)
     try{
         const logindevice = await Device.findOne({DeviceId});
         const token =await logindevice.getAuthToken();
+
+        // const responselogin = {
+        //     DeviceName:logindevice.DeviceName,
+        //     DeviceLat:logindevice.DeviceLat,
+        //     DeviceLon:logindevice.DeviceLon,
+        //     GPSPermitted:logindevice.GPSPermitted,
+        //     _id:logindevice._id,
+        //     DeviceId:logindevice.DeviceId,
+        //     token
+
+        // }
         res.status(200).send({
-            logindevice,
+            DeviceName:logindevice.DeviceName,
+            DeviceLat:logindevice.DeviceLat,
+            DeviceLon:logindevice.DeviceLon,
+            GPSPermitted:logindevice.GPSPermitted,
+            _id:logindevice._id,
+            DeviceId:logindevice.DeviceId,
             token
         })
         
@@ -97,22 +115,27 @@ router.patch('/changeme',auth,async(req,res)=>{
 
 })
 router.post('/savedevice',async(req,res)=>{
-    console.log(res.body)
+    console.log(req.body)
     try{
-          const device = await new Device(req.body);
+         const device = new Device(req.body)
         const token = await device.getAuthToken();
     
        await  device.save();
        res.status(200).send({
-           device,
-           token
+        DeviceName:device.DeviceName,
+        DeviceLat:device.DeviceLat,
+        DeviceLon:device.DeviceLon,
+        GPSPermitted:device.GPSPermitted,
+        _id:device._id,
+        DeviceId:device.DeviceId,
+        token
        })
        
     
     
     }catch(e){
 
-        res.status(201).send("Device not saved")
+        res.status(201).send(e)
     }
 //     try{
 //     const hashedpassword = await bcrytp.hash(req.body.DeviceId,10);

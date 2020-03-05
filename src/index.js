@@ -10,6 +10,7 @@ const app = express()
 
 //     res.send("qasasa")
 // });
+// app.use(bodyParser.json())
 app.use(bodyParser.json())
 app.use(devicerouter)
 app.use(weatherrouter)

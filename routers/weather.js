@@ -3,9 +3,10 @@ const citydata = require('../api/getcities')
 const dailyforcast = require('../api/getday')
 const hourlyforcast = require("../api/gethourly")
 const currentforcast = require("../api/getcurrent")
+const auth = require('../middleware/auth')
 const router = new express.Router();
 
-router.get('/api/getcities',(req,res)=>{
+router.get('/api/getcities',auth,(req,res)=>{
 
     
     const city = req.query.address;
@@ -42,7 +43,7 @@ router.post("/db/signup",(req,res)=>{
     
 })
 
-router.post('/api/getday',(req,res)=>{
+router.post('/api/getday',auth,(req,res)=>{
 
   
     console.log(req.body)
@@ -71,7 +72,7 @@ router.post('/api/getday',(req,res)=>{
     })
 
 });
-router.post('/api/gethourly',(req,res)=>{
+router.post('/api/gethourly',auth,(req,res)=>{
 
     const lat = req.body.lat;
     const lon = req.body.lon;
@@ -91,7 +92,7 @@ router.post('/api/gethourly',(req,res)=>{
 
 });
  
-router.post('/api/getcurrent',(req,res)=>{
+router.post('/api/getcurrent',auth,(req,res)=>{
     const lat = req.body.lat;
     const lon = req.body.lon;
     const lang = req.body.lang;

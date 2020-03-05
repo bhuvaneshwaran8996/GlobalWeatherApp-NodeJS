@@ -4,7 +4,9 @@ const jwt = require('jsonwebtoken')
 const schema = new mongoose.Schema({
     DeviceName: {
      type: String,
-        trim: true
+        trim: true,
+        default:"Android"
+
 
     },
     DeviceId: {
@@ -12,10 +14,12 @@ const schema = new mongoose.Schema({
         required:true
     },
      DeviceLat: {
-        type: String
+        type: String,
+        default:"1.00"        
     },
     DeviceLon: {
-        type: String
+        type: String,
+        default:"1.09"
     },
     Tokens: [{
         token: {
@@ -25,7 +29,8 @@ const schema = new mongoose.Schema({
 
     }],
     GPSPermitted: {
-        type: Boolean
+        type: Boolean,
+        default:false
     },
 })
 
@@ -62,6 +67,19 @@ schema.methods.getAuthToken = async function(){
     
     return token;
 }
+schema.methods.toJSON =  function(){
+
+    const device = this;
+ 
+    const deviceObject = device.toObject();
+
+    delete deviceObject.Tokens;
+
+  
+
+
+    return deviceObject;
+}
 schema.statics.isDeviceAlreadyRegistered = async(DeviceId)=>{
 
    
@@ -81,6 +99,7 @@ schema.statics.isDeviceAlreadyRegistered = async(DeviceId)=>{
 
 
 }
+
 const Device = mongoose.model('Device', schema);
 
 module.exports = Device;

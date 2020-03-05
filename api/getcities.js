@@ -17,7 +17,7 @@ const getcitynamefromcoor =  (name,callback)=>{
     request({url:"https://api.mapbox.com/geocoding/v5/mapbox.places/"+name+".json?access_token=pk.eyJ1IjoiYmh1dmFuZXNod2FyYW4iLCJhIjoiY2sycnUxeWRqMHI4eDNobDRpbXRiYTJvMiJ9.RV0FvJ3IO2Y-Plu4JpTE_Q",
     json:true},function(error,response,body){
           if(error){
-            callback(response.statusMessage,undefined)
+            callback(error,undefined)
            
         }else if(!body.features || body.features.length === 0){
             callback("coordinates not found",undefined)
