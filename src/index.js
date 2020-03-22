@@ -1,10 +1,7 @@
 const express = require('express')
 const  bodyParser = require('body-parser');
 
-app.use((req,res,next)=>{
 
-    res.send("side down")
-})
 const devicerouter = require("../routers/device")
 const paymentrouter = require("../routers/payment")
 const weatherrouter = require("../routers/weather")
