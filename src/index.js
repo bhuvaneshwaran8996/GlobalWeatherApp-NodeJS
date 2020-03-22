@@ -27,7 +27,7 @@ app.use((req,res,next)=>{
     next()
 
 })
-app.listen(port,()=>{
+app.listen(port,()=>{ 
     console.log(port+" port is running");
 })
 
