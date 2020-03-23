@@ -12,13 +12,14 @@ const app = express()
 //     res.send("qasasa")
 // });
 // app.use(bodyParser.json())
+const port = process.env.PORT;
 app.use(bodyParser.json())
 app.use(devicerouter)
 app.use(weatherrouter)
-
+ 
 
  
-const port = process.env.PORT || 10000
+
 
 
 
