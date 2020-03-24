@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/WeatherDevice',{
+mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
