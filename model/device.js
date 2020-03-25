@@ -58,7 +58,7 @@ schema.methods.getAuthToken = async function(){
 
 
     const _id = device._id.toString();
-    const token = jwt.sign({id:_id},"thevudiya",{expiresIn:"1 week"})
+    const token = jwt.sign({id:_id},process.env.JWT_SECRET,{expiresIn:"1 week"})
     device.Tokens.push({
        token
     })
