@@ -5,8 +5,10 @@ const  bodyParser = require('body-parser');
 const devicerouter = require("../routers/device")
 const paymentrouter = require("../routers/payment")
 const weatherrouter = require("../routers/weather")
-
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
+app.use(bodyParser.json()); // Send JSON responses
+
 // app.use((req,res,next)=>{
 
 //     res.send("qasasa")

@@ -135,7 +135,7 @@ router.post('/savedevice',async(req,res)=>{
     
     }catch(e){
 
-        res.status(201).send(e)
+        res.status(201).send("Device not saved")
     }
 //     try{
 //     const hashedpassword = await bcrytp.hash(req.body.DeviceId,10);
