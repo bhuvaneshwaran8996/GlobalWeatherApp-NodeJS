@@ -8,23 +8,17 @@ const gethourforcast = (lat,lon,lang,callback)=>{
  
     request({url:url,json:true}, function (error, response, body) {
      
-     
-
-        if(error){
+         if(error){
 
         callback(response.statusCode+" "+response.statusMessage,undefined,undefined)
-        }else if(body.currently.length === 0){
+        }else if(body.hourly.length === 0){
             callback("api data empty",undefined,undefined)
 
         }else{
-            
-          
+             for(let i = 0 ; i < body.hourly.data.length ;i++){
 
-            for(let i = 0 ; i < body.hourly.data.length ;i++){
-
-               
-                const hourdata = {
-                    
+                console.log(body.hourly.data.length)
+                       const hourdata = {
                     time:body.hourly.data[i].time,
                     summary:body.hourly.data[i].summary,
                     icon:body.hourly.data[i].icon,
@@ -36,7 +30,7 @@ const gethourforcast = (lat,lon,lang,callback)=>{
                     visibility:body.hourly.data[i].visibility,
                     cloudcover:body.hourly.data[i].cloudCover
 
-   }
+                 }
    hourlyarray.push(hourdata)
                
             }

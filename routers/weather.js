@@ -119,8 +119,7 @@ router.post('/api/getcurrent',auth,(req,res)=>{
                 sunsettime:data[0].sunsetTime,
                 moonphase: data[0].moonphase
                 
-                
-             }
+                  }
              return res.send(currentdata)
 
         })

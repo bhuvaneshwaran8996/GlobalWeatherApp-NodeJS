@@ -55,10 +55,9 @@ const schema = new mongoose.Schema({
 
 schema.methods.getAuthToken = async function(){
     const device = this;
-
-
     const _id = device._id.toString();
     const token = jwt.sign({id:_id},process.env.JWT_SECRET,{expiresIn:"1 week"})
+    
     device.Tokens.push({
        token
     })

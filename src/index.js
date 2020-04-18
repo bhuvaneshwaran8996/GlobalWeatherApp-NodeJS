@@ -14,7 +14,9 @@ app.use(bodyParser.json()); // Send JSON responses
 //     res.send("qasasa")
 // });
 // app.use(bodyParser.json())
-const port = process.env.PORT;
+// const port = process.env.PORT;
+
+const port = 3000;
 app.use(bodyParser.json())
 app.use(devicerouter)
 app.use(weatherrouter)

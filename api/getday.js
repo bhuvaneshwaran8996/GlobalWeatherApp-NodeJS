@@ -18,6 +18,7 @@ const getdayforcast = (lat,lon,lang,callback)=>{
         }else{
             
           
+            console.log(body.daily.data.length)
 
             for(let i = 0 ; i < body.daily.data.length ;i++){
 
