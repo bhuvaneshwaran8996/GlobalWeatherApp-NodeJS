@@ -125,7 +125,7 @@ router.post('/savedevice',async(req,res)=>{
         DeviceName:device.DeviceName,
         DeviceLat:device.DeviceLat,
         DeviceLon:device.DeviceLon,
-        GPSPermitted:device.GPSPermitted,
+        Premium:device.Premium,
         _id:device._id,
         DeviceId:device.DeviceId,
         token

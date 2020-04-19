@@ -28,7 +28,7 @@ const schema = new mongoose.Schema({
         },
 
     }],
-    GPSPermitted: {
+    Premium: {
         type: Boolean,
         default:false
     },
