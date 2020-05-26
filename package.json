@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-     "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
-     
-     
-    
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -27,5 +24,13 @@
   "devDependencies": {
     "env-cmd": "^10.0.1",
     "nodemon": "^1.18.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhuvaneshwaran8996/GlobalWeatherApp-NodeJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bhuvaneshwaran8996/GlobalWeatherApp-NodeJS/issues"
+  },
+  "homepage": "https://github.com/bhuvaneshwaran8996/GlobalWeatherApp-NodeJS#readme"
 }
